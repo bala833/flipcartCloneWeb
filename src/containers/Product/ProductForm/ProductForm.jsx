@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "./ProductForm.scss";
 import { addProduct, getProduct, updateProduct } from "../../../services/Product/Product";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/authContext";
 
 const ProductForm = () => {
@@ -11,6 +11,9 @@ const ProductForm = () => {
   const baseUrl = process.env.REACT_APP_API_URL;
   const imagebaseUrl = process.env.REACT_APP_API_IMAGE_CDN_URL;
   const isEdit = !!id;
+
+  const navigate = useNavigate();
+
 
   const [formData, setFormData] = useState({
     sku: "",
@@ -26,6 +29,7 @@ const ProductForm = () => {
     status: "ACTIVE",
     created_by: "admin",
     updated_by: "admin",
+    image_url: null
   });
   const [imageFile, setImageFile] = useState(null);
   const [preview, setPreview] = useState(null);
@@ -72,12 +76,15 @@ const ProductForm = () => {
       if (isEdit) {
         const _response = await updateProduct(id, payload, authToken);
         console.log(_response)
-        alert("✅ Product updated successfully!");
+        // alert("✅ Product updated successfully!");
+        navigate('/productlist');
+
       } else {
         console.log('calling add fun')
         const _response = await addProduct(payload, authToken);
         console.log(_response)
-        alert("✅ Product added successfully!");
+        // alert("✅ Product added successfully!");
+        navigate('/productlist');
       }
 
       //   if (onSuccess) onSuccess();
@@ -182,7 +189,9 @@ const ProductForm = () => {
         <div className="form-row">
           <label>Product Image</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
-          {preview && <img src={preview} alt="preview" className="image-preview" />}
+          {/* {preview && <img src={preview} alt="preview" className="image-preview" />} */}
+             {preview &&  <img src={`data:image/jpeg;base64,${formData.image_url}`} alt={formData.name} className="image-preview" /> }
+
         </div>
 
         <button type="submit" className="submit-btn">

@@ -129,7 +129,11 @@ const ProductList = () => {
             >
                           <div onClick={() => handleEdit(p.id)}>Edit</div>
               <div               onClick={() => handlRedirectProductDetailpage(p?.id)}>
-              <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} style={imageStyle} />
+              {/* <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} style={imageStyle} /> */}
+              <img src={`data:image/jpeg;base64,${p.image_url}`} alt={p.name} style={imageStyle} />
+
+              {/* <img src="data:image/jpeg;base64,{{p.image_url}}" /> */}
+
               <div style={nameStyle}>{p.name}</div>
               <div style={descStyle}>{p.description}</div>
               <div style={priceStyle}>

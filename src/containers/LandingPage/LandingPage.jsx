@@ -79,7 +79,9 @@ const LandingPage = () => {
               key={p.id}
               onClick={() => handleRedirectProductDetailPage(p.id)}
             >
-              <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} />
+              {/* <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} /> */}
+              <img src={`data:image/jpeg;base64,${p.image_url}`} alt={p.name} />
+
               <p className="product-name">{p.name}</p>
               <p className="product-price">₹{p.price}</p>
             </div>
@@ -96,7 +98,9 @@ const LandingPage = () => {
               key={p.id}
               onClick={() => handleRedirectProductDetailPage(p.id)}
             >
-              <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} />
+              {/* <img src={`${imageBaseUrl}${p.image_url}`} alt={p.name} /> */}
+              <img src={`data:image/jpeg;base64,${p.image_url}`} alt={p.name} />
+
               <p className="product-name">{p.name}</p>
               <p className="product-price">₹{p.price}</p>
             </div>

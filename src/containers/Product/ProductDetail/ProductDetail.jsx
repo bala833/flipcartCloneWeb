@@ -36,7 +36,8 @@ const ProductDetail = () => {
  <div className="product-detail-container">
       {/* LEFT SECTION - IMAGE & BUTTONS */}
       <div className="product-image-section">
-        <img src={`${imageBaseUrl}${product.image_url}`} alt={product.name} className="product-image" />
+        {/* <img src={`${imageBaseUrl}${product.image_url}`} alt={product.name} className="product-image" /> */}
+              <img src={`data:image/jpeg;base64,${product.image_url}`} alt={product.name} className="product-image"  />
 
         <div className="button-group">
           <button className="btn add-to-cart">ADD TO CART</button>
