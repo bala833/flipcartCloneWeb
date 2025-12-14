@@ -1,0 +1,31 @@
+.pagination-continer {
+  justify-content: center;
+  display: flex;
+
+  .pagination-mover {
+    cursor: pointer;
+  }
+
+  .total-pages {
+    display: flex;
+    padding: 0px 10px;
+
+    .pagination-indexing {
+      display: block;
+      border: 1px solid black;
+      padding: 0px 12px;
+      border-radius: 4px;
+      margin: 0px 5px;
+      cursor: pointer;
+      color: #ffff;
+      background-color: rgb(141, 145, 151);
+    }
+    .page-active {
+        background-color: #144056;
+    }
+  }
+  .pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}

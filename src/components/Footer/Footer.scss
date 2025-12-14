@@ -1,0 +1,58 @@
+.flipkart-footer {
+  background-color: #172337;
+  color: #fff;
+  padding: 2rem 0 1rem;
+  margin-top: auto;
+
+  .footer-section {
+    margin-bottom: 1rem;
+
+    h6 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #878787;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+
+        a {
+          color: #fff;
+          font-size: 0.85rem;
+          text-decoration: none;
+          opacity: 0.8;
+
+          &:hover {
+            opacity: 1;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    p {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #fff;
+      opacity: 0.9;
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #333;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+  }
+}

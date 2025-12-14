@@ -1,0 +1,49 @@
+$primary-blue: #2874f0;
+
+.signup-container {
+  min-height: 100vh;
+  background-color: #f1f3f6;
+}
+
+.signup-card {
+  width: 750px;
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.signup-left {
+  background-color: $primary-blue;
+  h4 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  p {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  img {
+    opacity: 0.9;
+  }
+}
+
+.signup-right {
+  background: #fff;
+  .form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    &:focus {
+      border-color: $primary-blue;
+      box-shadow: none;
+    }
+  }
+  .btn-primary {
+    background-color: $primary-blue;
+    border: none;
+    &:hover {
+      background-color: darken($primary-blue, 5%);
+    }
+  }
+}

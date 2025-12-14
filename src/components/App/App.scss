@@ -1,0 +1,18 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  background-color: #f1f3f6; // Flipkart-like light background
+  padding-top: 0px; // account for fixed header height
+}

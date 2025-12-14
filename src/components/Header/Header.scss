@@ -1,0 +1,113 @@
+/* Main Header Styles */
+.flipkart-header .header-navbar {
+  background-color: #2874f0;
+  padding: 0.6rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Layout container */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Logo */
+.header-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-logo img {
+  height: 35px;
+  margin-right: 8px;
+}
+
+.brand-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.brand-text small {
+  display: block;
+  font-size: 0.7rem;
+  color: #ffe500;
+  font-weight: 500;
+}
+
+/* Search Bar */
+.search-bar {
+  flex-grow: 1;
+  max-width: 600px;
+  margin: 0 1rem;
+  display: flex;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  border-radius: 2px 0 0 2px;
+  height: 38px;
+  font-size: 0.9rem;
+  padding: 0 10px;
+}
+
+.search-btn {
+  border-radius: 0 2px 2px 0;
+  background-color: #fff;
+  color: #2874f0;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Actions (Login + Cart) */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.nav-login,
+.nav-cart {
+  color: #fff;
+  font-weight: 500;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.nav-login:hover,
+.nav-cart:hover {
+  opacity: 0.8;
+}
+
+.header-actions svg {
+  font-size: 1rem;
+}
+
+/* Spacer for fixed navbar */
+.header-space {
+  height: 70px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-bar {
+    display: none;
+  }
+}
