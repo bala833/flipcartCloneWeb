@@ -66,6 +66,7 @@ const ProductForm = () => {
 
     const payload = new FormData();
     // payload.append("product", JSON.stringify(formData));
+    formData.image_url = null;
  const blob = new Blob([JSON.stringify(formData)], { type: "application/json" });
   payload.append("product", blob)
     if (imageFile && imageFile instanceof File) payload.append("imageFile", imageFile

@@ -19,7 +19,7 @@ const { authToken, setAuthToken } = useContext(AuthContext);
     // Fetch suggestions when user types
   useEffect(() => {
     const fetchSuggestions = async () => {
-      if (keyword.trim().length < 2) {
+      if (keyword?.trim()?.length < 2) {
         setSuggestions([]);
         return;
       }
@@ -27,7 +27,7 @@ const { authToken, setAuthToken } = useContext(AuthContext);
         const response = await SearchProduct(keyword, authToken)
  
         console.log(response, 'asdf')
-        setSuggestions(response.data);
+        setSuggestions(response?.data);
         // console.error("Error fetching suggestions:", error);
       
     };
@@ -96,7 +96,7 @@ const { authToken, setAuthToken } = useContext(AuthContext);
             </form>
 
             {/* Suggestions Dropdown */}
-            {showSuggestions && suggestions.length > 0 && (
+            {showSuggestions && suggestions?.length > 0 && (
               <ul
                 className="suggestions-list"
                 style={{

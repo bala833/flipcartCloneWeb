@@ -39,7 +39,10 @@ const Login = () => {
         console.log("User token:", response?.data);
         setAuthToken(response?.data)
     navigate(`/`)
+    
 
+      } else if (response === undefined || response === null) {
+        setMessage("⚠️ Network error. Please try again.");
       } else {
         setMessage("❌ Invalid credentials");
       }

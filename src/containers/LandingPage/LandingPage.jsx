@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './LandingPage.scss';
 import { getProductList } from '../../services/Product/Product';
 import { AuthContext } from '../../context/authContext';
+
+import {getAllBanner} from '../../services/Banners/Banners'
 const imageBaseUrl = process.env.REACT_APP_API_IMAGE_CDN_URL;
 
 
@@ -11,6 +13,7 @@ const LandingPage = () => {
   
 
   const [products, setProducts] = useState([]);
+  const [banners, setBanners] = useState([]);
   const navigate = useNavigate();
 
   const handleProductList = async () => {
@@ -19,7 +22,21 @@ const LandingPage = () => {
   };
 
 
+  const getBanner = async () => {
+    const response = await getAllBanner();
+
+    if (response?.status === 200) {
+      setBanners(response.data)
+    } else {
+      console.log("banner endpoint has some issue")
+    }
+
+    console.log(response)
+  }
+
+
   useEffect(() => {
+    getBanner();
     handleProductList();
   }, [authToken]);
 
@@ -37,18 +54,17 @@ const LandingPage = () => {
   const redirectToListpage = () => {
     navigate('productlist')
   }
-
-  const banners = [
-    "https://via.placeholder.com/1200x300?text=Big+Diwali+Sale",
-    "https://via.placeholder.com/1200x300?text=Festive+Deals",
-    "https://via.placeholder.com/1200x300?text=Top+Offers+on+Electronics",
-  ];
+  const redirectToform = () => {
+    navigate('banner/list')
+  }
 
 
   // ✅ Handler for navigating to Product Detail Page
   const handleRedirectProductDetailPage = (id) => {
     navigate(`/product/${id}`);
   };
+
+  console.log(banners)
 
   return (
     <div className="landing-page">
@@ -61,11 +77,12 @@ const LandingPage = () => {
           </div>
         ))}
       </div>
+      <span onClick={() => redirectToform()}>Go to Banner List page</span>
 
       {/* BANNER CAROUSEL */}
       <div className="banner-carousel">
         {banners.map((banner, i) => (
-          <img key={i} src={banner} alt={`banner-${i}`} className="banner-img" />
+          <img key={i} src={`data:image/jpeg;base64,${banner.image_url}`} alt={`banner-${i}`} className="banner-img" />
         ))}
       </div>
 

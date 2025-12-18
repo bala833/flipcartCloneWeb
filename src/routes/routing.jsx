@@ -8,6 +8,8 @@ import Login from '../containers/Authenticate/Login/Login';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Signup from '../containers/Authenticate/Signup/Signup';
+import BannerForm from '../containers/Banners/Banners';
+import BannerList from '../containers/Banners/BannersList/BannersList';
 
 
 
@@ -26,6 +28,9 @@ const Routing = () => {
                         <Route path='/product/:id' element={<ProductDetail />} />
                         <Route path='/product/form' element={<ProductForm />} />
                         <Route path='/product/form/:id' element={<ProductForm />} />
+                        <Route path='/banner/list' element={<BannerList />} />
+                        <Route path='/banner/form' element={<BannerForm />} />
+                        <Route path='/banner/form/:id' element={<BannerForm />} />
                     </Routes>
                 </main>
                 <Footer />
