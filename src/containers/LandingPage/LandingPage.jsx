@@ -66,6 +66,10 @@ const LandingPage = () => {
 
   console.log(banners)
 
+  const bannerDisplay = () => {
+    return banners.filter(bn => bn.active)
+  }
+
   return (
     <div className="landing-page">
 
@@ -81,7 +85,7 @@ const LandingPage = () => {
 
       {/* BANNER CAROUSEL */}
       <div className="banner-carousel">
-        {banners.map((banner, i) => (
+        {banners.filter(bn => bn.active).map((banner, i) => (
           <img key={i} src={`data:image/jpeg;base64,${banner.image_url}`} alt={`banner-${i}`} className="banner-img" />
         ))}
       </div>

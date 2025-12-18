@@ -25,7 +25,8 @@ const BannerList = () => {
   return (
     <div className="banner-list-container">
       <div className="header">
-        <h2>Banner Management</h2>
+    <h2>Banner Management</h2>
+
         <button onClick={() => navigate("/banner/form")}>+ Add Banner</button>
       </div>
 
@@ -44,12 +45,19 @@ const BannerList = () => {
             </div>
 
             <div className="banner-actions">
-              <button
-                className="edit-btn"
-                onClick={() => navigate(`/banner/form/${banner.id}`)}
-              >
-                Edit
-              </button>
+              <div className="banner-status-wrapper">
+                <div className={`${banner.active ? 'banner-active' : 'banner-deactive'} banner-deactivated`} title={`${banner.active ? 'active' : 'deactive'}`}>
+                </div>
+              </div>
+
+              <div className="">
+                <button
+                  className="edit-btn"
+                  onClick={() => navigate(`/banner/form/${banner.id}`)}
+                >
+                  Edit
+                </button>
+              </div>
             </div>
           </div>
         ))}

@@ -19,6 +19,8 @@ const BannerForm = () => {
     name: "",
     description: "",
     image_url: null,
+    active: true, // NEW
+
   });
 
   const [imageFile, setImageFile] = useState(null);
@@ -26,7 +28,9 @@ const BannerForm = () => {
 
   const handleGetBanner = async () => {
     const response = await getByIdBanner(authToken, id);
-    setFormData(response?.data);
+    setFormData({...response?.data,
+      active: response?.data?.active ?? false,
+    });
     setImageFile(response?.data?.image_url);
     setPreview(response?.data?.image_url); // Assuming this is a full URL
   };
@@ -76,10 +80,27 @@ const BannerForm = () => {
     }
   };
 
+
+  const handleToggleActive = () => {
+  setFormData((prev) => ({
+    ...prev,
+    active: !prev.active,
+  }));
+};
+
   return (
     <div className="flipkart-form-container">
-      <form className="flipkart-form" onSubmit={handleSubmit}>
+
+      <div className="flipkart-form">
+          <div className="header-left">
+    <button
+      className="back-btn"
+      onClick={() => navigate("/banner/list")}
+    >
+      ←
+    </button>
         <h2>{isEdit ? "Update Banner" : "Add New Banner"}</h2>
+    </div>
 
         <div className="form-row">
           <label>Name</label>
@@ -101,6 +122,7 @@ const BannerForm = () => {
           />
         </div>
 
+
         <div className="form-row">
           <label>Banner Image</label>
           <input type="file" accept="image/*" onChange={handleImageChange} />
@@ -120,10 +142,26 @@ const BannerForm = () => {
             ))}
         </div>
 
-        <button type="submit" className="submit-btn">
+                <div className="form-row switch-row">
+  <label>Status</label>
+
+  <div
+    className={`switch ${formData.active ? "active" : ""}`}
+    onClick={handleToggleActive}
+  >
+    <div className="switch-handle" />
+  </div>
+
+  <span className="switch-label">
+    {formData.active ? "Active" : "Inactive"}
+  </span>
+</div>
+
+
+        <button  className="submit-btn" onClick={handleSubmit}>
           {isEdit ? "Update Banner" : "Add Banner"}
         </button>
-      </form>
+      </div>
     </div>
   );
 };

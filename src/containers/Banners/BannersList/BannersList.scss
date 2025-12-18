@@ -8,7 +8,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-
+    
     h2 {
       color: #2874f0;
       font-weight: 600;
@@ -70,9 +70,27 @@
 
         .banner-actions {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         padding: 10px 12px;
         border-top: 1px solid #eee;
+
+        .banner-status-wrapper {
+          display: flex;
+          align-items: center;
+        }
+
+        .banner-deactivated {
+          padding: 12px 12px;
+          border-radius: 50%;
+        }
+
+        .banner-active {
+          background-color: #12c299;
+        }
+
+        .banner-deactive {
+          background-color: #f02727;
+        }
 
         .edit-btn {
             background: #fff;
