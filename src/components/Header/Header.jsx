@@ -5,16 +5,30 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { SearchProduct } from "../../services/Product/Product";
 import { AuthContext } from "../../context/authContext";
-import {logout} from "../../services/AuthService/AuthService"
+import {logout, logoutUser, authenticateMe} from "../../services/AuthService/AuthService"
 
 
 const Header = () => {
-const { authToken, setAuthToken } = useContext(AuthContext);
+const { authToken, setAuthToken, isAuthenticated, setIsAuthenticated, redirectToLogin} = useContext(AuthContext);
 
   const [keyword, setKeyword] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
+
+  const validateLogin = async () => {
+    const response = await authenticateMe();
+
+    if (response.status === 200) {
+      setIsAuthenticated(true)
+    } else {
+      redirectToLogin()
+    }
+      
+  }
+  useEffect(() => {
+    validateLogin()
+  }, [])
 
     // Fetch suggestions when user types
   useEffect(() => {
@@ -53,9 +67,10 @@ const { authToken, setAuthToken } = useContext(AuthContext);
   };
   const handleLogout = async () => {
 
-    const response =  await logout(authToken);
+    const response =  await logoutUser(authToken);
     if (response.status === 200) {
       setAuthToken("");
+      setIsAuthenticated(false)
       console.log(response,'logged out successful');
     } else {
       console.log(response, 'some issue')
@@ -133,7 +148,7 @@ const { authToken, setAuthToken } = useContext(AuthContext);
 
           {/* Right Section */}
           <div className="header-actions">
-            {authToken ? 
+            {isAuthenticated ? 
             <div onClick={() => handleLogout()} className="nav-login">
               <FaUser className="me-1" /> Logout
             </div>

@@ -12,7 +12,7 @@ const BannerList = () => {
   const fetchBanners = async () => {
     try {
       const res = await getAllBanner(authToken);
-      setBanners(res?.data || []);
+      if (res.status === 200) setBanners(res?.data || []);
     } catch (err) {
       console.error("Error fetching banners", err);
     }
@@ -31,7 +31,7 @@ const BannerList = () => {
       </div>
 
       <div className="banner-grid">
-        {banners.map((banner) => (
+        {banners?.map((banner) => (
           <div className="banner-card" key={banner.id}>
             <img
               src={`data:image/jpeg;base64,${banner.image_url}`}

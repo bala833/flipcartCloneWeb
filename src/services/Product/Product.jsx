@@ -8,8 +8,9 @@ const baseUrl = process.env.REACT_APP_API_URL;
 export const getProductList = async (authToken, page=0, size=10) => {
     try {
         const response = await axios.get(`${baseUrl}products?page=${page}&size=${size}`, {
+            withCredentials: true,
             headers : {
-                 "Authorization": `Bearer ${authToken}`, // your token from AuthContext
+                //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext
 
                 'Content-Type' : 'application/json'
             }
@@ -24,8 +25,9 @@ export const getProductList = async (authToken, page=0, size=10) => {
 export const getProduct = async (authToken, id) => {
     try {
         const response = await axios.get(`${baseUrl}product/${id}`, {
+            withCredentials: true,
             headers : {
-                 "Authorization": `Bearer ${authToken}`, // your token from AuthContext
+                //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext
 
                 'Content-Type' : 'application/json'
             }
@@ -39,8 +41,9 @@ export const getProduct = async (authToken, id) => {
 export const addProduct = async (payloadFormData, authToken) => {
     try {
         const response = await axios.post(`${baseUrl}product`, payloadFormData , {
+            withCredentials: true,
             headers : {
-                 "Authorization": `Bearer ${authToken}`, // your token from AuthContext
+                //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext
 
                     Accept: 'application/json',
                     'Content-Type': 'multipart/form-data'
@@ -56,8 +59,9 @@ export const addProduct = async (payloadFormData, authToken) => {
 export const updateProduct = async (id, payloadFormData, authToken) => {
     try {
         const response = await axios.put(`${baseUrl}product/${id}`, payloadFormData , {
+            withCredentials: true,
             headers : {
-                 "Authorization": `Bearer ${authToken}`, // your token from AuthContext
+                //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext
                     Accept: 'application/json',
                     'Content-Type': 'multipart/form-data'
             }
@@ -74,8 +78,9 @@ export const SearchProduct = async (keyword, authToken) => {
 
     try {
         const response = await axios.get(`${baseUrl}product/search?keyword=${keyword}`, {
+            withCredentials: true,
             headers : {
-                 "Authorization": `Bearer ${authToken}`, // your token from AuthContext
+                //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext
                 'Content-Type' : 'application/json'
             }
         });

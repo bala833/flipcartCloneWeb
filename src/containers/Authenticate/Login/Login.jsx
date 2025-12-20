@@ -6,7 +6,7 @@ import { AuthContext } from "../../../context/authContext";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { authToken, setAuthToken } = useContext(AuthContext);
+    const { authToken, setAuthToken, setIsAuthenticated} = useContext(AuthContext);
     console.log(authToken)
   const [formData, setFormData] = useState({
     username: "",
@@ -14,6 +14,8 @@ const Login = () => {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+
+
 
   // handle input change
   const handleChange = (e) => {
@@ -38,17 +40,21 @@ const Login = () => {
         setMessage("✅ Login successful!");
         console.log("User token:", response?.data);
         setAuthToken(response?.data)
+        setIsAuthenticated(true)
     navigate(`/`)
     
 
       } else if (response === undefined || response === null) {
         setMessage("⚠️ Network error. Please try again.");
+        setIsAuthenticated(false)
       } else {
         setMessage("❌ Invalid credentials");
+        setIsAuthenticated(false)
       }
     } catch (error) {
       console.error(error);
       setMessage("⚠️ Network error. Please try again.");
+        setIsAuthenticated(false)
     } finally {
       setLoading(false);
     }

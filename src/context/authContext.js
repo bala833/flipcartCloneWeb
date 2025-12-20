@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 // creating Auth Provider for Auth
 export const AuthContextProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState('');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userName, setUserName] = useState('');
     const [loggedOut, setLoggedOut] = useState(false);
     const [sessionTimeout, setSessionTimeout] = useState(false);
@@ -25,6 +26,7 @@ console.log(authToken, 'authToken')
             setAuthDetail(null);
             setLoginAuth(null);
             setShowOTPComponent(false);
+            setIsAuthenticated(false);
             // await logout();
         }
         setAuthToken(null);
@@ -33,11 +35,12 @@ console.log(authToken, 'authToken')
         setAuthToken(null);
         setAuthDetail(null);
         setLoggedOut(true);
-        setDefaultPage('/');
+        setDefaultPage('/login');
         setLoggedOut(false);
         setLoginAuth(null);
         setUserName(null);
         setShowOTPComponent(false);
+        setIsAuthenticated(false);
     }
     // const handleSessionTimeout = async () => {
     //     if (!loggedOut) {
@@ -155,6 +158,7 @@ console.log(authToken, 'authToken')
                 // verifyOTP,
                 returnToLogin,
                 handleLogout,
+                redirectToLogin,
                 setSessionTimeout,
                 setLoggedOut,
                 // handleResetExpirePassword,
@@ -168,6 +172,10 @@ console.log(authToken, 'authToken')
                 defaultPage,
                 setDefaultPage,
                 setUserName,
+                setDefaultPage,
+                setUserName,
+                isAuthenticated,
+                setIsAuthenticated,
                 // showFlyoutContainer,
                 // setShowFlyoutContainer,
                 // handleFlyoutContainer,
