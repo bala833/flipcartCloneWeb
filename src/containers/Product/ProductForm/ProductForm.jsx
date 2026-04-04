@@ -27,8 +27,8 @@ const ProductForm = () => {
     quantity_in_stock: "",
     unit: "",
     status: "ACTIVE",
-    created_by: "admin",
-    updated_by: "admin",
+    // created_by: "admin",
+    // updated_by: "admin",
     image_url: null
   });
   const [imageFile, setImageFile] = useState(null);

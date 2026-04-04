@@ -53,7 +53,7 @@ export const updateBanner = async (id, data, authToken) => {
 }
 export const addBanner = async (payload, authToken) => {
     try {
-        const response = await axios.post(`${baseUrl}banner`, payload, {
+        const response = await axios.post(`${baseUrl}banner/add`, payload, {
             withCredentials: true,
             headers : {
                 //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext

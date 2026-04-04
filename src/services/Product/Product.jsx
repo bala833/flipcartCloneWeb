@@ -40,7 +40,7 @@ export const getProduct = async (authToken, id) => {
 }
 export const addProduct = async (payloadFormData, authToken) => {
     try {
-        const response = await axios.post(`${baseUrl}product`, payloadFormData , {
+        const response = await axios.post(`${baseUrl}product/add`, payloadFormData , {
             withCredentials: true,
             headers : {
                 //  "Authorization": `Bearer ${authToken}`, // your token from AuthContext

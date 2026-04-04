@@ -19,7 +19,7 @@ const { authToken, setAuthToken, isAuthenticated, setIsAuthenticated, redirectTo
   const validateLogin = async () => {
     const response = await authenticateMe();
 
-    if (response.status === 200) {
+    if (response?.status === 200) {
       setIsAuthenticated(true)
     } else {
       redirectToLogin()
@@ -68,7 +68,7 @@ const { authToken, setAuthToken, isAuthenticated, setIsAuthenticated, redirectTo
   const handleLogout = async () => {
 
     const response =  await logoutUser(authToken);
-    if (response.status === 200) {
+    if (response?.status === 200) {
       setAuthToken("");
       setIsAuthenticated(false)
       console.log(response,'logged out successful');

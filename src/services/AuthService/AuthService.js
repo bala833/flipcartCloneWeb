@@ -20,7 +20,7 @@ export const login = async (payload) => {
 
 export const signUp = async (payload) => {
     try {
-        const response = await axios.post(`${baseUrl}register`, payload, {
+        const response = await axios.post(`${baseUrl}auth/register`, payload, {
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -33,7 +33,7 @@ export const signUp = async (payload) => {
 
 export const logout = async (token) => {
   try {
-    const response = await axios.post(`${baseUrl}logout`,null, {
+    const response = await axios.post(`${baseUrl}auth/logout`,null, {
         headers : {
             // "Authorization": `Bearer ${token}`, // your token from AuthContext
             'Content-Type' : 'application/json'
